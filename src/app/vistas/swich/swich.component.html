@@ -1,0 +1,114 @@
+<div class="container">
+  <h3>Switch</h3>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Nav tabs --><div class="card">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Crear</a></li>
+          <li role="presentation" class=""><a href="#modificar" aria-controls="modificar" role="tab" data-toggle="tab">Modificar</a></li>
+          <li role="presentation"><a href="#eliminar" aria-controls="eliminar" role="tab" data-toggle="tab">Eliminar</a></li>
+         
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home">
+              <h1>Switch</h1>
+              <form role="form">
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Nombre del switch</label>
+                  <input  type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce el nombre del switch">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Cantidad de Puertos</label>
+                  <input (change)="generarPuertos()" [(ngModel)]="Cant_puertos"  name="Cant_puertos" type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce la cantidad e puertos del switch">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Modelo  del Switch</label>
+                  <input  type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce El modelo del switch">
+                </div>
+                 <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Marca  del Switch</label>
+                  <input  type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce la marca del switch">
+                </div>
+                 <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Direccion ip del switch</label>
+                  <input  type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce la direccion del switch">
+                </div>
+                  <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Introduce la vlan del rauter</label>
+                  <input  type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce La vlan">
+                </div>
+
+                <div class="form-group">
+                     <div class="form-group">
+                         <br>
+                          <label class="subTitle" for="sel2">Seleccione el estdo del switch</label>
+                          <select multiple class="form-control" id="sel2">
+                            <option >Bueno</option>
+                            <option >Malo</option>
+                            <option >Intermedio</option>
+                            
+                          </select>
+                        </div>
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Introduce la Observacion del rauter</label>
+                  <input  type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce la observacion">
+                </div>
+                <form>
+                <div class="form-row">
+                  <div class="col">
+                    <label class="subTitle">Seleccione el puerto</label>
+                    <select multiple class="form-control" id="sel2">
+                         <ng-container *ngFor ="let p of puertos" >
+                             <option  (click)="puerto_select(p)" *ngIf="p.pc ==''">{{p.puerto}}</option>
+                          </ng-container>
+                      </select>
+                  </div>
+                  <div class="col">
+                    <label class="subTitle">Seleccione la apc</label>
+                    <select multiple class="form-control" >
+                            <option (click)="pc_select(pc)" *ngFor ="let pc of all_pc">{{pc.nombre_pc}}</option>
+                   </select>
+                  </div>
+                  <div class="col">
+                    <label class="subTitle">Click Aqui para Agrgar</label>
+                     <button (click)="AsignarPC_Puerto()" class="form-control btn btn-warning">Agregar</button>
+                    
+                  </div>
+                </div>
+                  <div class="form-group">
+                         <br>
+                          <label class="subTitle" for="sel2">Puertos del Switch asignados a las pc</label>
+                          <select multiple class="form-control">
+                            <option >pc1</option>
+                            <option >pc2</option>
+                            <option >pc3</option>
+                            
+                          </select>
+                        </div>
+              </form>
+               
+                <button type="submit" (click)="registrar()" class="btn btn-warning">Enviar</button>
+              </form>
+          </div>
+          <div role="tabpanel" class="tab-pane " id="modificar">
+        	<h1>En desarrolo</h1>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="eliminar">
+             <h1>En desarrolo</h1>
+          </div>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="container">
+  <h3>Cargo</h3>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Nav tabs --><div class="card">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Crear</a></li>
+          <li role="presentation" class=""><a href="#modificar" aria-controls="modificar" role="tab" data-toggle="tab" (click)="sacarDep()">Modificar</a></li>
+          <li role="presentation"><a href="#eliminar" aria-controls="eliminar" role="tab" data-toggle="tab">Eliminar</a></li>
+         
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home">
+                <!--Para crear direcciones-->
+          		 <form role="form">
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Nombre del cargo</label>
+                  <input [(ngModel)] = "save_cargo.nombre_cargo" name="nombre_cargo" type="email" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce El nombre del cargo">
+                </div>
+                <div class="form-group">
+                     <div class="form-group">
+                         <br>
+                          <label class="subTitle" for="sel2">Seleccione el departamento</label>
+                          <select  multiple class="form-control" id="sel2">
+                            <option *ngFor="let dep of all_departamento" (click)="select_dep(dep)">{{dep.nombre_dep}}</option>
+                          
+                          </select>
+                        </div>
+                </div>
+               
+                <button (click)="registra()" type="submit" class="btn btn-warning">Enviar</button>
+              </form>
+          </div>
+          <div role="tabpanel" class="tab-pane " id="modificar">
+        	    <table class="table">
+                <thead>
+                  <tr>
+                    <th class="subTitle centrar">Nombre del cargo</th>
+                    <th class="subTitle centrar">Nombre Departamento</th>
+                    <th class="subTitle centrar">Modificar</th>
+                     </tr>
+                </thead>
+                <tbody>
+                
+                 <tr *ngFor="let cargo of array_cargo" class="table-primary">
+                    <td class="subTitle centrar">{{cargo.nombre_cargo}}</td>
+                    <td class="subTitle centrar">{{cargo.nombre_dep.nombre_dep}}</td>
+                    <td class="subTitle centrar"><button type="button" class="btn btn-danger  glyphicon glyphicon-repeat" data-toggle="modal" data-target="#exampleModalLong" ></button></td>
+                  </tr>
+                  
+                </tbody>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="eliminar">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="subTitle centrar">Nombre del cargo</th>
+                    <th class="subTitle centrar">Nombre Departamento</th>
+                    <th class="subTitle centrar">Eliminar</th>
+                     </tr>
+                </thead>
+                <tbody>
+                
+                 <tr *ngFor="let cargo of array_cargo" class="table-primary">
+                    <td class="subTitle centrar">{{cargo.nombre_cargo}}</td>
+                    <td class="subTitle centrar">{{cargo.nombre_dep.nombre_dep}}</td>
+                    <td class="subTitle centrar"><button type="button" class="btn btn-danger  glyphicon glyphicon-trash" data-toggle="modal" data-target="#exampleModalLong" 
+                    (click)="deleteCargo(cargo)" ></button></td>
+                  </tr>
+                  
+                </tbody>
+            </table>
+          </div>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

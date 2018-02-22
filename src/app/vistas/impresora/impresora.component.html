@@ -1,0 +1,131 @@
+<div class="container">
+  <h3>Impresora</h3>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Nav tabs --><div class="card">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Crear</a></li>
+          <li role="presentation" class=""><a href="#modificar" aria-controls="modificar" (click)="getImpresoras()" role="tab" data-toggle="tab">Modificar</a></li>
+          <li role="presentation"><a href="#eliminar" aria-controls="eliminar" role="tab" data-toggle="tab">Eliminar</a></li>
+         
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home">
+                <!--Para crear direcciones-->
+          		<form role="form">
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Nombre dela impresora</label>
+                  <input [(ngModel)] = "nuevo_impresora.nombre_impresora" name="nombre_impresora" type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce El nombre del cargo">
+                </div>
+                <div class="form-group">
+                     <div class="form-group">
+                         <br>
+                          <label class="subTitle" for="sel2">Seleccione el tipo de impresora</label>
+                          <select  [(ngModel)]="nuevo_impresora.tipo" name="tipo"  multiple class="form-control" id="sel2">
+                          <option >Matriz de puntos</option>
+                          <option   >Inyeccion de tinta</option>
+                          <option >Impresion laser</option>
+                          </select>
+                        </div>
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Tipo de Tinta</label>
+                  <input [(ngModel)] = "nuevo_impresora.tipo_tinta" name="tipo_tinta" type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce el tipo de tinta">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Modelo</label>
+                  <input [(ngModel)] = "nuevo_impresora.modelo" name="modelo" type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce el modelo">
+                </div>
+                 <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Marca</label>
+                  <input [(ngModel)] = "nuevo_impresora.marca" name="marca" type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce la marca">
+                </div>
+             
+                <div class="form-group">
+                     <div class="form-group">
+                         <br>
+                          <label class="subTitle" for="sel2">Seleccione el Estado</label>
+                          <select [(ngModel)]="nuevo_impresora.estado" name="estado"  multiple class="form-control" id="sel2">
+                          <option  >Bueno</option>
+                          <option   >Malo</option>
+                          <option    >Intermedio</option>
+                          </select>
+                        </div>
+                </div>
+                <div class="form-group">
+                        <label class="subTitle" for="ejemplo_email_1">Observacion:</label>
+                        <textarea [(ngModel)]="nuevo_impresora.obser" name="obser" class="form-control" rows="5" id="comment"></textarea>
+                </div>
+                <div class="form-group">
+                         <br>
+                          <label class="subTitle" for="sel2">Seleccione el Departamento </label>
+                          <select multiple class="form-control" id="sel2">
+                            <option  (click)="select_dep(depto)" *ngFor ="let depto of all_departamento">{{depto.nombre_dep}}</option>
+                        
+                          </select>
+                </div>
+                <button (click)="registrar()" type="submit" class="btn btn-warning">Enviar</button>
+              </form>
+          </div>
+          <div role="tabpanel" class="tab-pane " id="modificar">
+        	<table class="table">
+                <thead>
+                  <tr>
+                    <th class="subTitle centrar">Nombre de impresora</th>
+                    <th class="subTitle centrar">Tipo</th>
+                    <th class="subTitle centrar">Modelo</th>
+                    <th class="subTitle centrar">Marca</th>
+                    <th class="subTitle centrar">Deparatamento</th>
+                    <th class="subTitle centrar">Modificar</th>
+                     </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let impre of Array_impresora" class="table-primary">
+                    <td class="subTitle centrar">{{impre.nombre_impresora}}</td>
+                    <td class="subTitle centrar">{{impre.tipo}}</td>
+                     <td class="subTitle centrar">{{impre.modelo}}</td> <td class="subTitle centrar">{{impre.marca}}</td>
+                     <td class="subTitle centrar">{{impre.nombre_dep.nombre_dep}}</td>
+                    <td class="subTitle centrar"><button type="button" class="btn btn-danger  glyphicon glyphicon-trash" data-toggle="modal" data-target="#exampleModalLong" (click)="Modificar(impre)" ></button></td>
+                  </tr>
+                
+                  
+                </tbody>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="eliminar">
+             <table class="table">
+                <thead>
+                  <tr>
+                    <th class="subTitle centrar">Nombre de impresora</th>
+                    <th class="subTitle centrar">Tipo</th>
+                    <th class="subTitle centrar">Modelo</th>
+                    <th class="subTitle centrar">Marca</th>
+                    <th class="subTitle centrar">Deparatamento</th>
+                    <th class="subTitle centrar">Modificar</th>
+                     </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let impre of Array_impresora" class="table-primary">
+                    <td class="subTitle centrar">{{impre.nombre_impresora}}</td>
+                    <td class="subTitle centrar">{{impre.tipo}}</td>
+                     <td class="subTitle centrar">{{impre.modelo}}</td> <td class="subTitle centrar">{{impre.marca}}</td>
+                     <td class="subTitle centrar">{{impre.nombre_dep.nombre_dep}}</td>
+                    <td class="subTitle centrar"><button type="button" class="btn btn-danger  glyphicon glyphicon-trash" data-toggle="modal" data-target="#exampleModalLong" (click)="eliminar(impre)" ></button></td>
+                  </tr>
+                
+                  
+                </tbody>
+            </table>
+          </div>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

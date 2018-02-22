@@ -1,0 +1,140 @@
+<div class="container">
+  <h3>Telefono</h3>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Nav tabs --><div class="card">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Crear</a></li>
+          <li role="presentation" class=""><a href="#modificar" aria-controls="modificar" role="tab" data-toggle="tab" (click)="CargarTelefonos()">Modificar</a></li>
+          <li role="presentation"><a href="#eliminar" aria-controls="eliminar" role="tab" data-toggle="tab">Eliminar</a></li>
+         
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home">
+                <!--Para crear direcciones-->
+          		<form role="form">
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Nombre del Telefono</label>
+                  <input [(ngModel)]="nuevo_telefono.nombre_telefono" name="nombre_telefono" type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce El nombre del Telefono">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Extencion</label>
+                  <input [(ngModel)]="nuevo_telefono.extencion" name="extencion" type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce La direccion ip">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Direccion Ip</label>
+                  <input [(ngModel)]="nuevo_telefono.d_ip_tele" name="d_ip_tele" type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce La direccion Mac">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Direccion Mac</label>
+                  <input [(ngModel)]="nuevo_telefono.d_mac_tele" name="d_mac_tele" type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce La direccion Mac">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Modelo del Telefono</label>
+                  <input [(ngModel)]="nuevo_telefono.modelo" name="modelo" type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce el modelo">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Marca del Telefono</label>
+                  <input [(ngModel)]="nuevo_telefono.marca" name="marca" type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce la marca">
+                </div>
+                <div class="form-group">
+                    <label class="subTitle" for="ejemplo_email_1">Selecione el estado</label>
+                    <select [(ngModel)]="nuevo_telefono.estado" name="estado" class="form-control" id="sel1">
+                      <option>Bueno</option>
+                      <option>Fallando</option>
+                      <option>Malo</option>
+                      <option>Basura</option>
+                    </select>
+                    <div class="form-group">
+                        <label class="subTitle" for="ejemplo_email_1">Observacion:</label>
+                        <textarea [(ngModel)]="nuevo_telefono.obser" name="obser" class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label class="subTitle" for="ejemplo_email_1">Ingrese La vlan</label>
+
+                       <input [(ngModel)]="nuevo_telefono.puerto_lan" name="puerto_lan"  id="date" class="form-control" id="ejemplo_email_1" type="text">
+                    </div> 
+                     <div class="form-group">
+                         <br>
+                          <label class="subTitle" for="sel2">Seleccione el Departamento Al que Pertenece</label>
+                          <select multiple class="form-control" id="sel2">
+                            <option  (click)="select_dep(depto)" *ngFor ="let depto of all_departamento">{{depto.nombre_dep}}</option>
+                        
+                          </select>
+                        </div>
+                          <div class="form-group">
+                         <br>
+                          <label class="subTitle" for="sel2">Seleccione el puerto pc a que pc pertenece</label>
+                          <select multiple class="form-control" id="sel2">
+                            <option (click)="selected_pc('5a81da56963d4f0d44960e37')">Computadora 1</option>
+                            
+                            
+                          </select>
+                        </div>
+                </div>
+               
+                <button (click)="register()" type="submit" class="btn btn-warning">Enviar</button>
+              </form>
+          </div>
+          <div role="tabpanel" class="tab-pane " id="modificar">
+        	 <table class="table">
+                <thead>
+                  <tr>
+                    <th class="subTitle centrar">Nombre de Telefono</th>
+                    <th class="subTitle centrar">Extencion</th>
+                    <th class="subTitle centrar">Ip</th>
+                    <th class="subTitle centrar">Mac</th>
+                    <th class="subTitle centrar">Deparatamento</th>
+                    <th class="subTitle centrar">Modificar</th>
+                     </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let tel of Array_telefono" class="table-primary">
+                    <td class="subTitle centrar">{{tel.nombre_telefono}}</td>
+                    <td class="subTitle centrar">{{tel.extencion}}</td>
+                     <td class="subTitle centrar">{{tel.d_ip_tele}}</td> <td class="subTitle centrar">{{tel.d_mac_tele}}</td>
+                     <td class="subTitle centrar">{{tel.nombre_dep.nombre_dep}}</td>
+                    <td class="subTitle centrar"><button type="button" class="btn btn-danger  glyphicon glyphicon-trash" data-toggle="modal" data-target="#exampleModalLong" (click)="Modificar(tel)" ></button></td>
+                  </tr>
+                
+                  
+                </tbody>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="eliminar">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="subTitle centrar">Nombre de Telefono</th>
+                    <th class="subTitle centrar">Extencion</th>
+                    <th class="subTitle centrar">Ip</th>
+                    <th class="subTitle centrar">Mac</th>
+                    <th class="subTitle centrar">Deparatamento</th>
+                    <th class="subTitle centrar">Modificar</th>
+                     </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let tel of Array_telefono" class="table-primary">
+                    <td class="subTitle centrar">{{tel.nombre_telefono}}</td>
+                    <td class="subTitle centrar">{{tel.extencion}}</td>
+                     <td class="subTitle centrar">{{tel.d_ip_tele}}</td> <td class="subTitle centrar">{{tel.d_mac_tele}}</td>
+                     <td class="subTitle centrar">{{tel.nombre_dep.nombre_dep}}</td>
+                    <td class="subTitle centrar"><button type="button" class="btn btn-danger  glyphicon glyphicon-trash" data-toggle="modal" data-target="#exampleModalLong" (click)="eliminar(tel)" ></button></td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

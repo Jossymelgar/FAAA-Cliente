@@ -1,0 +1,207 @@
+<div class="container">
+  <h3>Computadora</h3>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Nav tabs --><div class="card">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Crear</a></li>
+          <li role="presentation" class=""><a (click)="getPcs()" href="#modificar" aria-controls="modificar" role="tab" data-toggle="tab">Modificar</a></li>
+          <li role="presentation"><a href="#eliminar" aria-controls="eliminar" role="tab" data-toggle="tab">Eliminar</a></li>
+         
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home">
+                <!--Para crear direcciones-->
+          		 <form role="form">
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Nombre de Pc</label>
+                  <input [(ngModel)]="nuevo_pc.nombre_pc" name="nuevo_pc"  type="text" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce El nombre dela pc">
+                </div>
+                 <div class="form-group">
+                          <label class="subTitle" for="sel2">Seleccione el tipo de Pc</label>
+                          <select [(ngModel)]="nuevo_pc.tipo_pc" name="tipo_pc"   multiple class="form-control" id="sel2">
+                          <option >Escritorio</option>
+                          <option   >Laptop</option>
+                         <option   >Otros</option>
+                          </select>
+                 </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Direccion IP de la targeta de red</label>
+                  <input [(ngModel)]="nuevo_pc.dire_ip_tar_red" name="dire_ip_tar_red" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce La ip">
+                </div>
+               <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Direccion MAC de la targeta de red</label>
+                  <input [(ngModel)]="nuevo_pc.dire_mac_tar_red" name="dire_mac_tar_red" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce La Mac">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Direccion IP del wifi</label>
+                  <input [(ngModel)]="nuevo_pc.dire_ip_wifi" name="dire_ip_wifi" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce Ip">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Direccion mac del wifi</label>
+                  <input [(ngModel)]="nuevo_pc.dire_mac_wifi" name="dire_mac_wifi" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce Mac">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Tipo de procesador</label>
+                  <input [(ngModel)]="nuevo_pc.tipo_procesador" name="tipo_procesador" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce correo electronico">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Memoria Ram</label>
+                  <input [(ngModel)]="nuevo_pc.memoria_ram" name="memoria_ram" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce correo electronico">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">disco Duro</label>
+                  <input [(ngModel)]="nuevo_pc.disco_duro" name="disco_duro" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce correo electronico">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Monitor</label>
+                  <input [(ngModel)]="nuevo_pc.monitor" name="monitor" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce correo electronico">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Teclado</label>
+                  <input [(ngModel)]="nuevo_pc.teclado" name="teclado" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce correo electronico">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Esta activa la pc</label>
+                  <label >
+                    Si<input type="radio" name="activa" [value]="true" [(ngModel)]="nuevo_pc.activa" checked>
+                </label>
+                <label >
+                    No<input  type="radio" name="activa" [value]="false" [(ngModel)]="nuevo_pc.activa">
+                </label>
+                   
+                </div>
+                 <div class="form-group">
+                          <label class="subTitle" for="sel2">Sistema Operativo</label>
+                          <select [(ngModel)]="nuevo_pc.s_o" name="s_o"  multiple class="form-control" id="sel2">
+                          <option >Windows</option>
+                          <option >Linux</option>
+                          <option >Mac OS</option>
+                          <option >Unix</option>
+                          <option >Google Chrome OS</option>
+
+                        </select>
+                 </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Tipo de antivirus</label>
+                  <input [(ngModel)]="nuevo_pc.antivirus" name="antivirus" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce correo electronico">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Modelo</label>
+                  <input [(ngModel)]="nuevo_pc.modelo" name="modelo" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce correo electronico">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Marca</label>
+                  <input [(ngModel)]="nuevo_pc.marca" name="marca" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce correo electronico">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Estado de la PC</label>
+                  <select [(ngModel)]="nuevo_pc.estado" name="estado"   multiple class="form-control" id="sel2">
+                          <option >Malo</option>
+                          <option >Bueno</option>
+                          <option >Intermedio</option>
+                          
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Observacion</label>
+                  <input [(ngModel)]="nuevo_pc.obser" name="obser" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce correo electronico">
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Impresora</label>
+                  <select  multiple class="form-control" id="sel2">
+                          <option (click)= "select_impresora(impre)" *ngFor="let impre of all_impresora" >{{impre.nombre_impresora}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">Nombre del departamento </label>
+                  <select   multiple class="form-control" id="sel2">
+                          <option (click)= "select_departamento(dep)"  *ngFor="let dep of all_departamento" >{{dep.nombre_dep}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="subTitle" for="ejemplo_email_1">fecha de registro</label>
+                  <input  type="date" class="form-control" id="ejemplo_email_1"
+                         placeholder="Introduce correo electronico">
+                </div>
+                <button (click)="register()" type="submit" class="btn btn-warning">Enviar</button>
+              </form>
+          </div>
+          <div role="tabpanel" class="tab-pane " id="modificar">
+        	<table class="table">
+                <thead>
+                  <tr>
+                    <th class="subTitle centrar">Nombre de pc</th>
+                    <th class="subTitle centrar">tipo pc</th>
+                    <th class="subTitle centrar">activo</th>
+                    <th class="subTitle centrar">Antivirus</th>
+                    <th class="subTitle centrar">Impresora</th>
+                    <th class="subTitle centrar">Departamento</th>
+                    <th class="subTitle centrar">Modificar</th>
+                     </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pc of Array_pc" class="table-primary">
+                    <td class="subTitle centrar">{{pc.nombre_pc}}</td>
+                    <td class="subTitle centrar">{{pc.tipo_pc}}</td>
+                    <td class="subTitle centrar">{{pc.activa}}</td>
+                    <td class="subTitle centrar">{{pc.antivirus}}</td>
+                    <td class="subTitle centrar">{{pc.impresora.nombre_impresora}}</td>
+                    <td class="subTitle centrar">{{pc.nombre_dep.nombre_dep}}</td>
+                    <td class="subTitle centrar"><button type="button" class="btn btn-danger  glyphicon glyphicon-repeat" data-toggle="modal" data-target="#exampleModalLong" ></button></td>
+                  </tr>
+                
+                  
+                </tbody>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="eliminar">
+             <table class="table">
+                <thead>
+                  <tr>
+                    <th class="subTitle centrar">Nombre de pc</th>
+                    <th class="subTitle centrar">tipo pc</th>
+                    <th class="subTitle centrar">activo</th>
+                    <th class="subTitle centrar">Antivirus</th>
+                    <th class="subTitle centrar">Impresora</th>
+                    <th class="subTitle centrar">Departamento</th>
+                    <th class="subTitle centrar">Modificar</th>
+                     </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pc of Array_pc" class="table-primary">
+                    <td class="subTitle centrar">{{pc.nombre_pc}}</td>
+                    <td class="subTitle centrar">{{pc.tipo_pc}}</td>
+                    <td class="subTitle centrar">{{pc.activa}}</td>
+                    <td class="subTitle centrar">{{pc.antivirus}}</td>
+                    <td class="subTitle centrar">{{pc.impresora.nombre_impresora}}</td>
+                    <td class="subTitle centrar">{{pc.nombre_dep.nombre_dep}}</td>
+                    <td class="subTitle centrar"><button (click)="eliminar(pc)" type="button" class="btn btn-danger  glyphicon glyphicon-trash" data-toggle="modal" data-target="#exampleModalLong" ></button></td>
+                  </tr>
+                
+                  
+                </tbody>
+            </table>
+          </div>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

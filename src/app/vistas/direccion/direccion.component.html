@@ -1,0 +1,109 @@
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Control Administrativo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          
+        </button>
+      </div>
+      <div class="modal-body">
+            <form class="row">
+                <div class="form-group col-md-8 offset-md-2">
+                  <label class="subTitle" for="exampleInputEmail1">Nombre de la Direccion</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese la direccion" [(ngModel)]="Direc_seleccionado.nombre" name="nombre" >
+                  <small id="emailHelp" class="form-text text-muted">Ingrese la direccion que desea crear</small>
+                  
+                </div>
+                <div class="col-md-2"></div>
+              </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" (click)="update()" class="btn btn-primary" data-dismiss="modal">  Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="container">
+
+  <h3 (click) = "ver()">Direccion</h3>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Nav tabs --><div class="card">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Crear</a></li>
+          <li role="presentation" class=""><a href="#modificar" aria-controls="modificar" (click)="sacar_Todo_direc()" role="tab" data-toggle="tab">Modificar</a></li>
+          <li role="presentation"><a href="#eliminar" aria-controls="eliminar" role="tab" data-toggle="tab">Eliminar</a></li>
+         
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home">
+                <!--Para crear direcciones-->
+              <form class="row">
+                <div class="form-group col-md-5 offset-md-4">
+                  <label class="subTitle" for="exampleInputEmail1">Nombre de la Direccion</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese la direccion" [(ngModel)]="save_direccion.nombre" name="nombre" >
+                  <small id="emailHelp" class="form-text text-muted">Ingrese la direccion que desea crear</small>
+                  <button type="submit" (click)="regitrar()" class="btn btn-primary">Crear</button>
+                </div>
+                <div class="col-md-3"></div>
+              </form>
+
+          </div>
+          <div  role="tabpanel" class="tab-pane " id="modificar">
+             <table class="table">
+                <thead>
+                  <tr>
+                    <th class="subTitle centrar">Nombre de Direccion</th>
+                    <th class="subTitle centrar">Modificar</th>
+                     </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let direc of direcciones" class="table-primary">
+                    <td class="subTitle centrar">{{direc.nombre}}</td>
+                    <td class="subTitle centrar"><button type="button" class="btn btn-danger  glyphicon glyphicon-repeat" data-toggle="modal" data-target="#exampleModalLong" (click)="select(direc)" ></button></td>
+                  </tr>
+                
+                  
+                </tbody>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="eliminar">
+             <table class="table">
+                <thead>
+                  <tr>
+                    <th class="subTitle centrar">Nombre de Direccion</th>
+                    <th class="subTitle centrar">Eliminar</th>
+                     </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let direc of direcciones" class="table-primary">
+                    <td class="subTitle centrar">{{direc.nombre}}</td>
+                    <td class="subTitle centrar"><button type="button" class="btn btn-success glyphicon glyphicon-trash" (click)="eliminar_Direc(direc._id)"></button></td>
+                  </tr>
+                 
+                  
+                </tbody>
+            </table>
+          </div>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
